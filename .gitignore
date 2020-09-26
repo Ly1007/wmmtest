@@ -1,7 +1,7 @@
 /.idea
 /.vscode
-/vendor
+#/vendor
 *.log
-thinkphp
+#thinkphp
 .env
 .DS_Store
