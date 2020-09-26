@@ -1,13 +1,14 @@
 <?php
-namespace app\admin\controller;
+namespace app\index\controller;
 
+use app\common\enum\BaseEnum;
 use think\Controller;
 
-class Index extends Controller
+class Index
 {
     public function index()
     {
 
-        return view('index');
+        return BaseEnum::WELCOME_GREETING;
     }
 }
