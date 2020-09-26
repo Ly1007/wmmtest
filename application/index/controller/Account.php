@@ -4,11 +4,12 @@ namespace app\index\controller;
 use think\Request;
 use app\index\validate\Account as AccountValidate;
 use app\common\enum\BaseStatusEnum;
+use app\index\model\logic\AccountLogic;
 
 class Account
 {
     // 用户登录
-    public function login(Request $request)
+    public function login(Request $request, AccountLogic $accountLogic)
     {
         // 参数
         $post = $request->post();
@@ -22,6 +23,7 @@ class Account
         }
 
         // 根据用户名查询用户数据
+        $data = $accountLogic->getUserInfoByName($name);
 
     }
 }
