@@ -13,14 +13,14 @@ class Account
     {
         // 参数
         $post = $request->post();
-        $name = $post['user_name'];
-        $pwd = $post['user_pwd'];
-
         // 校验数据
         $accountValidate = new AccountValidate();
         if (!$accountValidate->check($post)) {
             return sys_response(4000003,BaseStatusEnum::CODE_4000003);
         }
+
+        $name = $post['user_name'];
+        $pwd = $post['user_pwd'];
 
         // 根据用户名查询用户数据
         $data = $accountLogic->getUserInfoByName($name);
