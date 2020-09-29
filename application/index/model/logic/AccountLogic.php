@@ -9,10 +9,11 @@ class AccountLogic
      * 根据用户名获取用户信息
      * @param string $name 用户姓名
      */
-    public function getUserInfoByName($name)
+    public function getUserInfoByName($user_name)
     {
         $userModel = new UserModel();
-        $data = $userModel->getListByName($name);
+        $data = $userModel->getUserInfoByName($user_name);
+        // logic层做返回数据的处理
 
         return $data;
     }
