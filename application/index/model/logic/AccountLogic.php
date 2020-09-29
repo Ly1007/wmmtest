@@ -14,6 +14,9 @@ class AccountLogic
         $userModel = new UserModel();
         $data = $userModel->getUserInfoByName($user_name);
         // logic层做返回数据的处理
+        if (!empty($data)) {
+            $data['address'] = !empty($data['address']) ? $data['address'] : '';
+        }
 
         return $data;
     }

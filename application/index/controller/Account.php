@@ -25,9 +25,13 @@ class Account
         // 根据用户名查询用户数据
         $data = $accountLogic->getUserInfoByName($user_name);
         if (empty($data)) {
-            echo 22;
+            return sys_response(4000001,'暂无查询数据');
         }
-        var_dump($data);die;
+
+        // 比较数据
+        if ($user_pwd != $data['pwd']) {
+            return sys_response(4000003,'用户密码错误');
+        }
 
         return $data;
     }
