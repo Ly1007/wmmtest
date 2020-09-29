@@ -13,15 +13,30 @@
 
 /**
  * 返回信息
- * @param int $status 返回状态码
- * @param string $msg 返回消息
+ * @param int $error_code 返回状态码
+ * @param string $error_msg 返回消息
  * @param array $data 返回数据
  */
-function sys_response($status = 0, $msg = '', $data = null)
-{
-    return [
-        "error_code" => $status,
-        "error_msg" => $msg,
-        "data" => $data
-    ];
+if (!function_exists('sys_response')) {
+    function sys_response ($error_code = 0, $error_msg = '', $data = null) {
+        // 如果$error_msg为空自动获取
+        if (empty($error_msg)) {
+            $key = 'CODE_' . $error_code;
+            $reflectionClass = new ReflectionClass('\app\common\enum\BaseStatusCodeEnum');
+            if ($reflectionClass->hasConstant($key)) {
+                $error_msg = $reflectionClass->getConstant($key);
+            }
+        }
+
+        $response = [
+            'error_code' => $error_code,
+            'error_msg' => $error_msg,
+        ];
+
+        if ($data !== false) {
+            $response['data'] = $data;
+        }
+
+        return $response;
+    }
 }

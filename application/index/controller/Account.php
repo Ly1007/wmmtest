@@ -3,7 +3,7 @@ namespace app\index\controller;
 
 use think\Request;
 use app\index\validate\Account as AccountValidate;
-use app\common\enum\BaseStatusEnum;
+use app\common\enum\BaseStatusCodeEnum;
 use app\index\model\logic\AccountLogic;
 
 class Account
@@ -25,12 +25,12 @@ class Account
         // 根据用户名查询用户数据
         $data = $accountLogic->getUserInfoByName($user_name);
         if (empty($data)) {
-            return sys_response(4000001,'暂无查询数据');
+            return sys_response(4000001);
         }
 
         // 比较数据
         if ($user_pwd != $data['pwd']) {
-            return sys_response(4000003,'用户密码错误');
+            return sys_response(4000004);
         }
 
         return $data;
