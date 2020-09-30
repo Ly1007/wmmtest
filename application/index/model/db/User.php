@@ -16,4 +16,11 @@ class User extends Model
 
         return $this->where($map)->find();
     }
+
+    // 用户注册
+    public function userRegister($input)
+    {
+        return $this->insert($input);
+    }
+
 }
