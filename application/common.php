@@ -28,11 +28,11 @@ if (!function_exists('sys_response')) {
             }
         }
 
+        // 返回格式及数据
         $response = [
             'error_code' => $error_code,
             'error_msg' => $error_msg,
         ];
-
         if ($data !== false) {
             $response['data'] = $data;
         }
