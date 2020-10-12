@@ -52,12 +52,13 @@ class Account
             return sys_response(4000005);
         }
         // 查看用户是否注册过
-        $data = $accountLogic->getUserInfoByName($post['user_name']);
+        $data = $accountLogic->getUserInfoByName($post['user_mobile']);
         if (!empty($data)) {
             return sys_response(4000006);
         }
         // 用户注册
         $input['user_name'] = $post['user_name'];
+        $input['user_mobile'] = $post['user_mobile'];
         $input['pwd'] = md5($post['user_pwd']);
         $res = $accountLogic->userRegister($input);
 
@@ -68,8 +69,8 @@ class Account
         }
     }
 
-    // 用户登录复杂
-    public function complexLogin(Request $request)
+    // 用户登录（复杂）
+    public function complexLogin(Request $request, AccountLogic $accountLogic)
     {
         // 接收参数
         $post = $request->post();
@@ -79,6 +80,9 @@ class Account
             return sys_response(4000003,$accountValidate->getError());
         }
 
+        // 查询用户手机号是否注册，没有注册先帮用户注册
+        $user_mobile = $post['user_mobile'];
+        $userIsLogic = $accountLogic->getUserInfoByMobile($user_mobile);
     }
 
 }

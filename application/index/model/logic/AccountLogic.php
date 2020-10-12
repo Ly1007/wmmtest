@@ -23,6 +23,23 @@ class AccountLogic
     }
 
     /**
+     * 根据用户手机号获取用户信息
+     * @param string $user_mobile 用户姓名
+     * @return array $data 用户信息
+     */
+    public function getUserInfoByMobile($user_mobile)
+    {
+        $userModel = new UserModel();
+        $data = $userModel->getUserInfoByMobile($user_mobile);
+        // logic层做返回数据的处理
+        if (!empty($data)) {
+            $data['address'] = !empty($data['address']) ? $data['address'] : '';
+        }
+
+        return $data;
+    }
+
+    /**
      * 用户注册
      * @param array $input 用户注册数据
      * @return int 注册成功失败信息

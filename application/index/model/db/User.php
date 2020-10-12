@@ -23,4 +23,12 @@ class User extends Model
         return $this->insert($input);
     }
 
+    // 根据用户手机号获取用户信息
+    public function getUserInfoByMobile($mobile)
+    {
+        $map['mobile'] = ['EQ', $mobile];
+
+        return $this->where($map)->find();
+    }
+
 }
