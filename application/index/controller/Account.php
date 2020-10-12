@@ -68,4 +68,17 @@ class Account
         }
     }
 
+    // 用户登录复杂
+    public function complexLogin(Request $request)
+    {
+        // 接收参数
+        $post = $request->post();
+        // 校验数据
+        $accountValidate = new AccountValidate();
+        if (!$accountValidate->scene('complexLogin')->check($post)) {
+            return sys_response(4000003,$accountValidate->getError());
+        }
+
+    }
+
 }
