@@ -6,34 +6,19 @@ use app\index\model\db\User as UserModel;
 class AccountLogic
 {
     /**
-     * 根据用户名获取用户信息
-     * @param string $user_name 用户姓名
+     * 获取用户信息
+     * @param string $input
      * @return array $data 用户信息
      */
-    public function getUserInfoByName($user_name)
+    public function getUserInfo($input)
     {
         $userModel = new UserModel();
-        $data = $userModel->getUserInfoByName($user_name);
+        $data = $userModel->getUserInfo($input);
         // logic层做返回数据的处理
         if (!empty($data)) {
+            $data = $data->toArray();
             $data['address'] = !empty($data['address']) ? $data['address'] : '';
-        }
-
-        return $data;
-    }
-
-    /**
-     * 根据用户手机号获取用户信息
-     * @param string $user_mobile 用户姓名
-     * @return array $data 用户信息
-     */
-    public function getUserInfoByMobile($user_mobile)
-    {
-        $userModel = new UserModel();
-        $data = $userModel->getUserInfoByMobile($user_mobile);
-        // logic层做返回数据的处理
-        if (!empty($data)) {
-            $data['address'] = !empty($data['address']) ? $data['address'] : '';
+            $data['free_chance'] = !empty($data['free_chance']) ?? '';
         }
 
         return $data;

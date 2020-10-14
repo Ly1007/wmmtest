@@ -7,26 +7,21 @@ class User extends Model
 {
     protected $table = 't_user';
 
-    // 获取用户信息
-    public function getUserInfoByName($user_name)
-    {
-        $map = [
-            'a' => ['=','1'],
-        ];
-
-        return $this->where($map)->find();
-    }
-
     // 用户注册
     public function userRegister($input)
     {
         return $this->insert($input);
     }
 
-    // 根据用户手机号获取用户信息
-    public function getUserInfoByMobile($mobile)
+    // 获取用户信息
+    public function getUserInfo($input)
     {
-        $map['mobile'] = ['EQ', $mobile];
+        $map =[];
+        if (!empty($input['user_mobile'])) {
+            $map['mobile'] = ['EQ', $input['user_mobile']];
+        } else if (!empty($input['user_name'])) {
+            $map['user_name'] = ['EQ', $input['user_name']];
+        }
 
         return $this->where($map)->find();
     }
