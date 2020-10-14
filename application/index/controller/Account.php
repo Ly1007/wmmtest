@@ -21,7 +21,7 @@ class Account
         // 根据用户名查询用户数据
         $data = $accountLogic->getUserInfo($post);
         if (empty($data)) {
-            return sys_response(4000001);
+            return sys_response(4000007);
         }
         // 比较数据
         $user_pwd = $post['user_pwd'];
@@ -29,11 +29,11 @@ class Account
             return sys_response(4000004);
         }
 
-        $response = sys_response(0, '请求成功',  [
-            "list" => $data
-        ]);
-
-        return json($response);
+        if (!empty($data)) {
+            return sys_response(0,'用户登录成功');
+        } else {
+            return sys_response(5000002);
+        }
     }
 
     // 用户注册
@@ -57,8 +57,8 @@ class Account
         }
 
         // 用户注册
-        $input['user_name'] = $post['user_name'];
-        $input['mobile'] = $post['user_mobile'];
+        $input['name'] = $post['user_name'];
+        $input['tel'] = $post['user_mobile'];
         $input['pwd'] = md5($post['user_pwd']);
         $res = $accountLogic->userRegister($input);
 

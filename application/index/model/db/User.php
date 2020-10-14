@@ -5,7 +5,7 @@ use think\Model;
 
 class User extends Model
 {
-    protected $table = 't_user';
+    // protected $table = 't_user';
 
     // 用户注册
     public function userRegister($input)
@@ -18,9 +18,9 @@ class User extends Model
     {
         $map =[];
         if (!empty($input['user_mobile'])) {
-            $map['mobile'] = ['EQ', $input['user_mobile']];
+            $map['tel'] = ['EQ', $input['user_mobile']];
         } else if (!empty($input['user_name'])) {
-            $map['user_name'] = ['EQ', $input['user_name']];
+            $map['name'] = ['EQ', $input['user_name']];
         }
 
         return $this->where($map)->find();
