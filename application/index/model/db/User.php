@@ -1,4 +1,7 @@
 <?php
+/**
+ * user Model
+ */
 namespace app\index\model\db;
 
 use think\Model;
@@ -24,6 +27,33 @@ class User extends Model
         }
 
         return $this->where($map)->find();
+    }
+
+    // 用户分页列表查询条件
+    private function getUserPageMap($input)
+    {
+        $map = [];
+        $map['is_delete'] = ['EQ', 1];
+
+        if ($input['name']) {
+            $map['name'] = ['EQ', $input['name']];
+        }
+    }
+
+    // 用户分页列表数量
+    public function getUserPageCount($inoput)
+    {
+        $map = $this->getUserPageMap($inoput);
+
+        return $this->where($map)->count('id');
+    }
+
+    // 用户分页列表
+    public function getUserPageList($input, $offset = 0, $limit = 0)
+    {
+        $map = $this->getUserPageMap($input);
+
+        return $this->where($map)->order('create_time desc')->limit($offset, $limit)->select();
     }
 
 }
