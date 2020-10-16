@@ -5,7 +5,7 @@ use think\Model;
 
 class User extends Model
 {
-    // protected $table = 't_user';
+    protected $table = 'mmw_user';
 
     // 用户注册
     public function userRegister($input)
