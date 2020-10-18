@@ -7,9 +7,18 @@ class Test
 {
     public function index()
     {
-        Cache::set('name','张三',3600);
-        $var = Cache::get('name');
+        $cache = Cache::set('name','张三',3600);
+        if ($cache) {
+            echo '缓存成功';
+        } else {
+            echo '缓存失败';
+        }
+    }
 
-        echo $var;
+    public function testCache()
+    {
+        $res = Cache::get('name');
+
+        echo $res;
     }
 }
