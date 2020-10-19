@@ -13,16 +13,20 @@ class UserLogic
     public function getUserPageList($input, $page = 1, $limit = 10)
     {
         $userModel = new UserModel();
-
-        // count
+        // 数据count
         $count = $userModel->getUserPageCount($input);
+        // 分页
+        $page = new Page($page, $limit, $count);
+        $pageShow = $page->show();
+
         if ($count > 0) {
-            // 分页
-            $page = new Page($page, $limit, $count);
-            $pageShow = $page->show();
-            $list = $userModel->getUserPageList($input, $pageShow->fitstRow, $pageShow->pageSize);
+            $list = $userModel->getUserPageList($input, $page->firstRow, $page->pageSize);
         }
 
+        return [
+            'list' => $list ?? [],
+            'page' => $pageShow
+        ];
     }
 
 }

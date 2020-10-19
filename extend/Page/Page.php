@@ -6,11 +6,13 @@ namespace Page;
 
 class Page
 {
-    public $pageSize = 10;             // 每页条数
+    public $pageSize = 10;              // 每页条数
     private $total_number = 0;          // 总条数
     private $pageIndex = 1;             // 当前页数
-    public $page_total_number = 0;     // 总页数
-    public $firstRow = 0;              // 起始条数
+    public $page_total_number = 0;      // 总页数
+    public $firstRow = 0;               // 起始条数
+    private $default_result = ["page_total_number" => 0,"total_number" => 0,"page_size" => 0,"page_current" => 0];
+
 
     public function __construct($pageIndex = 1, $pageSize = 10, $total_number = 0)
     {
@@ -24,11 +26,16 @@ class Page
     public function show()
     {
         return [
-            'page_current' => (int)$this->pageIndex,
             'page_total_number' => (int)$this->page_total_number,
+            'total_number' => (int)$this->total_number,
             'page_size' => (int)$this->pageSize,
-            'total_number' => (int)$this->total_number
+            'page_current' => (int)$this->pageIndex
         ];
+    }
+
+    public function default_show()
+    {
+        return $this->default_result;
     }
 
 }

@@ -35,15 +35,15 @@ class User extends Model
         $map = [];
         $map['is_delete'] = ['EQ', 1];
 
-        if ($input['name']) {
+        if (!empty($input['name'])) {
             $map['name'] = ['EQ', $input['name']];
         }
     }
 
     // 用户分页列表数量
-    public function getUserPageCount($inoput)
+    public function getUserPageCount($input)
     {
-        $map = $this->getUserPageMap($inoput);
+        $map = $this->getUserPageMap($input);
 
         return $this->where($map)->count('id');
     }

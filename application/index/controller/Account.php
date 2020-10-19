@@ -57,10 +57,7 @@ class Account
         }
 
         // 用户注册
-        $input['name'] = $post['user_name'];
-        $input['tel'] = $post['user_mobile'];
-        $input['pwd'] = md5($post['user_pwd']);
-        $res = $accountLogic->userRegister($input);
+        $res = $accountLogic->userRegister($post);
 
         if ($res == true) {
             return sys_response(0,'用户注册成功');
