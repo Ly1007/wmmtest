@@ -20,8 +20,7 @@ class User
             return sys_response(4000001);
         }
 
-        return $data;
-
+        return sys_response(0, '请求成功', $data);
     }
 
     // 用户列表
