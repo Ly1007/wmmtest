@@ -6,6 +6,7 @@ namespace app\index\model\logic;
 
 use app\index\model\db\User as UserModel;
 use Page\Page;
+use app\index\enum\UserEnum;
 
 class UserLogic
 {
@@ -21,6 +22,11 @@ class UserLogic
 
         if ($count > 0) {
             $list = $userModel->getUserPageList($input, $page->firstRow, $page->pageSize);
+            foreach ($list as $k => $v) {
+                $v['create_date'] = date('Y-m-d H:i:s', $v['create_time']);
+                $v['sex_desc'] = UserEnum::getItem('sex', ($v['sex']));
+                var_dump($v['sex_desc']);
+            }die;
         }
 
         return [
