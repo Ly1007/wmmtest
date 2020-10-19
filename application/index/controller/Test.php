@@ -2,6 +2,7 @@
 namespace app\index\controller;
 
 use think\facade\Cache;
+use think\Session;
 
 class Test
 {
@@ -22,21 +23,13 @@ class Test
         echo $res;
     }
 
-    public function getCard()
+    public function setSession()
     {
-        $companyIds = [];
-        $cardModel = new CardModel();
-        $cardList = $cardModel->getCardByComId($companyIds);
+        Session(null);
+    }
 
-        if (!empty($cardList)) {
-            $cardLists = [];
-            foreach ($cardList as $k => $v) {
-                if ($v['type'] == 1) {
-                    $v['content'] = (int)$v['money1'];
-                }
-
-                $cardLists[$v['com_id']][] = $v;
-            }
-        }
+    public function testSession()
+    {
+        echo Session('test');
     }
 }
