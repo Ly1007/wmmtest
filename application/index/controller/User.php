@@ -7,9 +7,21 @@ use think\Request;
 class User
 {
     // 查询用户信息
-    public function getinfo()
+    public function getInfo(Request $request)
     {
+        $post = $request->post();
+        if (empty($post['id'])) {
+            return sys_response(4000002);
+        }
+
         $userLogic = new UserLogic();
+        $data = $userLogic->getUserInfo($post);
+        if (empty($data)) {
+            return sys_response(4000001);
+        }
+
+        return $data;
+
     }
 
     // 用户列表

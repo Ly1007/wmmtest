@@ -33,7 +33,7 @@ class AccountLogic
     {
         $data['name'] = $input['user_name'];
         $data['tel'] = $input['user_mobile'];
-        $data['pwd'] = md5($input['user_pwd']);
+        $data['pwd'] = password_hash($input['user_pwd'], PASSWORD_DEFAULT);
         $data['create_time'] = time();
 
         $userModel = new UserModel();

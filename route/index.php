@@ -10,5 +10,6 @@ Route::group('V1', function () {
 
     // 用户
     Route::rule('userList', 'User/getList');  // 用户列表
+    Route::rule('userInfo', 'User/getInfo');  // 用户信息
 
 })->middleware('Account');

@@ -25,7 +25,7 @@ class Account
         }
         // 比较数据
         $user_pwd = $post['user_pwd'];
-        if (md5($user_pwd) != $data['pwd']) {
+        if (!password_verify($user_pwd, $data['pwd'])) {
             return sys_response(4000004);
         }
 

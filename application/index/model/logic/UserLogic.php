@@ -29,4 +29,12 @@ class UserLogic
         ];
     }
 
+    // 查询用户信息
+    public function getUserInfo($input)
+    {
+        $userModel = new UserModel();
+
+        return $userModel->getUserInfo($input);
+    }
+
 }

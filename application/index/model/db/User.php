@@ -25,6 +25,9 @@ class User extends Model
         } else if (!empty($input['user_name'])) {
             $map['name'] = ['EQ', $input['user_name']];
         }
+        if (!empty($input['id'])) {
+            $map['id'] = ['EQ', $input['id']];
+        }
 
         return $this->where($map)->find();
     }
@@ -53,7 +56,11 @@ class User extends Model
     {
         $map = $this->getUserPageMap($input);
 
-        return $this->where($map)->order('create_time desc')->limit($offset, $limit)->select();
+        return $this->where($map)
+            ->field(['id', 'tel', 'address', 'sex', 'create_time'])
+            ->order('create_time desc')
+            ->limit($offset, $limit)
+            ->select();
     }
 
 }
