@@ -16,17 +16,18 @@ class UserLogic
         $userModel = new UserModel();
         // 数据count
         $count = $userModel->getUserPageCount($input);
+
         // 分页
         $page = new Page($page, $limit, $count);
         $pageShow = $page->show();
 
         if ($count > 0) {
             $list = $userModel->getUserPageList($input, $page->firstRow, $page->pageSize);
+
             foreach ($list as $k => $v) {
                 $v['create_date'] = date('Y-m-d H:i:s', $v['create_time']);
                 $v['sex_desc'] = UserEnum::getItem('sex', ($v['sex']));
-                var_dump($v['sex_desc']);
-            }die;
+            }
         }
 
         return [

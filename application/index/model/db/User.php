@@ -4,6 +4,7 @@
  */
 namespace app\index\model\db;
 
+use think\db\Query;
 use think\Model;
 
 class User extends Model
@@ -35,12 +36,18 @@ class User extends Model
     // 用户分页列表查询条件
     private function getUserPageMap($input)
     {
-        $map = [];
-        $map['is_delete'] = ['EQ', 1];
+
+        $map = new Query();
+        $map->where('is_delete', 'EQ', 1);
 
         if (!empty($input['name'])) {
-            $map['name'] = ['EQ', $input['name']];
+            $map->where('name', 'EQ', $input['name']);
         }
+        if (!empty($input['tel'])) {
+            $map->where('tel', 'EQ', $input['tel']);
+        }
+
+        return $map;
     }
 
     // 用户分页列表数量
