@@ -1,6 +1,7 @@
 <?php
 namespace app\index\controller;
 
+use app\index\model\logic\LogAccountLogic;
 use think\Request;
 use app\index\validate\Account as AccountValidate;
 use app\index\model\logic\AccountLogic;
@@ -28,6 +29,10 @@ class Account
         if (!password_verify($user_pwd, $data['pwd'])) {
             return sys_response(4000004);
         }
+
+        // 生成登录日志
+        $logAccountLogic = new LogAccountLogic();
+        $logAccountLogic->addAccountLog($data, 1, '用户登录成功', $request->ip());
 
         return sys_response(0,'用户登录成功');
     }

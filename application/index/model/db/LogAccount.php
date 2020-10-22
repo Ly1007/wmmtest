@@ -10,7 +10,7 @@ class LogAccount extends Model
 {
     protected $table = 'mmw_log_account';
 
-    // 生成账户登录信息
+    // 生成账户登录日志
     public function addLog($data)
     {
         return $this->save($data);
