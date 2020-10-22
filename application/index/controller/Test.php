@@ -1,7 +1,9 @@
 <?php
 namespace app\index\controller;
 
+use think\Exception;
 use think\facade\Cache;
+use think\Request;
 use think\Session;
 
 class Test
@@ -23,13 +25,19 @@ class Test
         echo $res;
     }
 
-    public function setSession()
+    public function test(Request $request)
     {
-        Session(null);
+        echo $request->uid;
+        echo '<br>';
+        $num = 0;
+        try {
+            echo 1 / $num;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            echo "<br>";
+            echo $e->getCode();
+        }
+
     }
 
-    public function testSession()
-    {
-        echo Session('test');
-    }
 }

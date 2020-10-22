@@ -29,11 +29,7 @@ class Account
             return sys_response(4000004);
         }
 
-        if (!empty($data)) {
-            return sys_response(0,'用户登录成功');
-        } else {
-            return sys_response(5000002);
-        }
+        return sys_response(0,'用户登录成功');
     }
 
     // 用户注册

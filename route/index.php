@@ -5,7 +5,7 @@ Route::group('V1', function () {
     Route::rule('index', 'Index/index');
 
     // 测试
-    Route::rule('test', 'Test/index');  // 测试
+    Route::rule('test', 'Test/test');  // 测试
     Route::rule('testCache', 'Test/testCache');  // 测试
     Route::rule('testSession', 'Test/testSession');  // 测试
     Route::rule('setSession', 'Test/setSession');  // 测试
