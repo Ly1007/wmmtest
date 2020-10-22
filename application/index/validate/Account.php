@@ -9,6 +9,8 @@ class Account extends Validate
         'user_name' => 'max:20',
         'user_pwd' => 'require',
         'user_pwd_two' => 'require',
+        'user_pwd_new' => 'require',
+        'user_pwd_new_two' => 'require',
         'user_mobile' => [
             'require',
             'max' => 11,
@@ -29,5 +31,6 @@ class Account extends Validate
         'login'  =>  ['user_name','user_pwd'],
         'register'  =>  ['user_mobile','user_name','user_pwd','user_pwd_two'],
         'complexLogin'  =>  ['user_mobile','user_pwd','user_pwd_two'],
+        'changePwd'  =>  ['user_mobile','user_pwd','user_pwd_new','user_pwd_new_two'],
     ];
 }

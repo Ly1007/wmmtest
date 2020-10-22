@@ -67,4 +67,27 @@ class Account
         }
     }
 
+    // 修改密码
+    public function changePwd(Request $request, AccountLogic $accountLogic)
+    {
+        $post = $request->post();
+        // 参数验证
+        $accountValidate = new AccountValidate();
+        if (!$accountValidate->scene('changePwd')->check($post)) {
+            return sys_response(4000003, $accountValidate->getError());
+        }
+
+        // 判断两次新密码是否一致
+        if ($post['pwd_new'] != $post['pwd_new_two']) {
+            return sys_response(4000005);
+        }
+        // 判断新密码是否与老密码一致
+        if ($post['pwd_new'] == $post['pwd']) {
+            return sys_response(4000008);
+        }
+
+        // 修改密码
+        $res = $accountLogic->changePwd();
+    }
+
 }

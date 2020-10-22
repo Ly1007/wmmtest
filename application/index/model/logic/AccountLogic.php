@@ -40,4 +40,16 @@ class AccountLogic
         return $userModel->userRegister($data);
     }
 
+    /**
+     * 修改密码
+     */
+    public function changePwd($input)
+    {
+        $tel = $input['tel'];
+        $pwd = $input['pwd_new'];
+
+        $userModel = new UserModel();
+        return $userModel->changePwd($tel, $pwd);
+    }
+
 }

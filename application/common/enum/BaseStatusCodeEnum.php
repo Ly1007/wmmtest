@@ -14,6 +14,7 @@ class BaseStatusCodeEnum
     const CODE_4000005 = '两次密码不一致';
     const CODE_4000006 = '该用户已注册';
     const CODE_4000007 = '该用户还未注册';
+    const CODE_4000008 = '不能与旧密码一致';
 
     /**************** 4 数据校验 ****************/
     const CODE_5000001 = '数据库链接失败';
