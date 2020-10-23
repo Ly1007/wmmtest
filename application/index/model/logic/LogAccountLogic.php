@@ -20,7 +20,7 @@ class LogAccountLogic
         $data = [
             'uid' => $input['id'],
             'name' => $input['name'],
-            'status' => $status,
+            'status' => $status ?? 1,
             'info' => $info,
             'ip' => $ip,
             'user_agent' => $_SERVER['HTTP_USER_AGENT'],
