@@ -78,16 +78,18 @@ class Account
         }
 
         // 判断两次新密码是否一致
-        if ($post['pwd_new'] != $post['pwd_new_two']) {
+        if ($post['user_pwd_new'] != $post['user_pwd_new_two']) {
             return sys_response(4000005);
         }
         // 判断新密码是否与老密码一致
-        if ($post['pwd_new'] == $post['pwd']) {
+        if ($post['user_pwd_new'] == $post['user_pwd']) {
             return sys_response(4000008);
         }
 
         // 修改密码
-        $res = $accountLogic->changePwd();
+        $res = $accountLogic->changePwd($post);
+
+        return $res;
     }
 
 }

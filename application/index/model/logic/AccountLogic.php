@@ -45,11 +45,14 @@ class AccountLogic
      */
     public function changePwd($input)
     {
-        $tel = $input['tel'];
-        $pwd = $input['pwd_new'];
+        $tel = $input['user_mobile'];
+        $pwd = $input['user_pwd_new'];
+        $data = [
+            'pwd' => password_hash($pwd, PASSWORD_DEFAULT)
+        ];
 
         $userModel = new UserModel();
-        return $userModel->changePwd($tel, $pwd);
+        return $userModel->changePwd($tel, $data);
     }
 
 }

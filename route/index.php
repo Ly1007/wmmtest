@@ -14,6 +14,7 @@ Route::group('V1', function () {
     Route::rule('login', 'Account/login', 'POST');  // 登录
     Route::rule('complexLogin', 'Account/complexLogin', 'POST');  // 复杂登录
     Route::rule('register', 'Account/register', 'POST');  // 注册
+    Route::rule('changePwd', 'Account/changePwd', 'POST');  // 修改密码
 
     // 用户user模块
     Route::rule('userList', 'User/getList');  // 用户列表

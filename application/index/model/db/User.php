@@ -70,4 +70,13 @@ class User extends Model
             ->select();
     }
 
+    // 修改密码
+    public function changePwd($tel, $data)
+    {
+        $map = new Query();
+        $map->where('tel', 'EQ', $tel);
+
+        return $this->where($map)->update($data);
+    }
+
 }
