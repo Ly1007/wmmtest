@@ -15,12 +15,12 @@ class LogAccountLogic
      * @param string $info 日志信息
      * @param string $ip ip信息
      */
-    public function addAccountLog($input, $status, $info, $ip)
+    public function addAccountLog($input, $info, $ip, $status = 1)
     {
         $data = [
             'uid' => $input['id'],
             'name' => $input['name'],
-            'status' => $status ?? 1,
+            'status' => $status,
             'info' => $info,
             'ip' => $ip,
             'user_agent' => $_SERVER['HTTP_USER_AGENT'],

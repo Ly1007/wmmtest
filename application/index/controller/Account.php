@@ -32,7 +32,7 @@ class Account
 
         // 生成登录日志
         $logAccountLogic = new LogAccountLogic();
-        $logAccountLogic->addAccountLog($data, 1, '用户登录成功', $request->ip());
+        $logAccountLogic->addAccountLog($data, '用户登录成功', $request->ip(), 1);
 
         return sys_response(0,'用户登录成功');
     }
