@@ -27,17 +27,7 @@ class Test
 
     public function test(Request $request)
     {
-        echo $request->uid;
-        echo '<br>';
-        $num = 0;
-        try {
-            echo 1 / $num;
-        } catch (Exception $e) {
-            echo $e->getMessage();
-            echo "<br>";
-            echo $e->getCode();
-        }
-
+        echo 'hello test!';
     }
 
 }
