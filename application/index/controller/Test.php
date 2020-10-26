@@ -32,4 +32,11 @@ class Test
         var_dump($userData);
     }
 
+    public function testGit(Request $request)
+    {
+        $userData = $request->userData;
+
+        var_dump($userData);
+    }
+
 }
