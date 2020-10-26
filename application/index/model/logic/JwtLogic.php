@@ -30,6 +30,7 @@ class JwtLogic
     /**
      * 验证token
      * @param string $token 用户token
+     * @return int 用户id
      */
     public function getToken($token)
     {
