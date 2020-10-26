@@ -14,18 +14,14 @@ class Account
      */
     public function handle($request, \Closure $next)
     {
-        // $token = $request->header('token', '');
-        // if ($token == '') {
-        //     return json(['error_code' => 0, 'error_msg' => 'token未传！']);
-        // }
-        //
-        // $JwtLogic = new JwtLogic();
-        // $uid = $JwtLogic->checkToken($token);
-        // $request->uid = $uid;
-        //
-        // return $next($request);
+        $token = $request->header('token', '');
+        if (empty($token)) {
+            return json(['error_code' => 0, 'error_msg' => 'token未传！']);
+        }
 
-        $request->uid = 1;
+        $JwtLogic = new JwtLogic();
+        $data = $JwtLogic->getToken($token);
+        $request->userData = $data;
 
         return $next($request);
     }

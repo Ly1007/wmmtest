@@ -27,7 +27,9 @@ class Test
 
     public function test(Request $request)
     {
-        echo 'hello test!';
+        $userData = $request->userData;
+
+        var_dump($userData);
     }
 
 }
