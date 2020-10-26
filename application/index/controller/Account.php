@@ -1,6 +1,7 @@
 <?php
 namespace app\index\controller;
 
+use app\index\model\logic\JwtLogic;
 use app\index\model\logic\LogAccountLogic;
 use think\Request;
 use app\index\validate\Account as AccountValidate;
@@ -30,11 +31,15 @@ class Account
             return sys_response(4000004);
         }
 
+        // 用户token
+        $jwt = new JwtLogic();
+        $token = $jwt->setToken($data['id']);
+
         // 生成登录日志
         $logAccountLogic = new LogAccountLogic();
         $logAccountLogic->addAccountLog($data, '用户登录成功', $request->ip(), 1);
 
-        return sys_response(0,'用户登录成功');
+        return sys_response(0,'用户登录成功', ['token' => $token]);
     }
 
     // 用户注册

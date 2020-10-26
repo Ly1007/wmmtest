@@ -22,9 +22,8 @@ class JwtLogic
             "exp" => time()+7200,                     // token 过期时间
             "uid" => $uid                             // 记录的userid的信息，这里是自已添加上去的，如果有其它信息，可以再添加数组的键值对
         ];
-        $jwt = JWT::encode($token, $key, 'HS256'); // 根据参数生成token
 
-        return json_encode(['token' => $jwt]);
+        return JWT::encode($token, $key, 'HS256'); // 根据参数生成token
     }
 
     /**
