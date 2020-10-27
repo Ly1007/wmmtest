@@ -44,6 +44,7 @@ class User
             return sys_response(4000002);
         }
 
+        // 图片上传
         $res = upImg($file);
         if ($res) {
             return sys_response(0, '请求成功', $res);
