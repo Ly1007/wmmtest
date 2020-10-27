@@ -29,7 +29,7 @@ class Test
     {
         $userData = $request->userData;
 
-        var_dump($userData);
+        return $userData;
     }
 
     public function testGit(Request $request)
