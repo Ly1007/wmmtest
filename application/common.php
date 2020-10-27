@@ -41,9 +41,20 @@ if (!function_exists('sys_response')) {
     }
 }
 
+/**
+ * 单张图片上传
+ * @param object $file 图片文件
+ * @return string 图片路径
+ */
 if (!function_exists('upImg')) {
-    function upImg()
-    {
+    function upImg ($file) {
+        $info = $file->move('../public/uploads');
+        if ($info) {
+            $filePath = $info->getFilename();
+            $filePath = str_replace('\\', '/', $filePath);
+            $filePath = '/public/uploads' . $filePath;
 
+            return $filePath;
+        }
     }
 }

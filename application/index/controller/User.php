@@ -39,19 +39,18 @@ class User
     // 用户上传头像
     public function upHeadImg(Request $request)
     {
-        $post = $request->file();
-        $i = 0;
-        $str = '';
-        $d = '';
-        foreach ($post as $key => $value) {
-            $i++;
-            if ($i!=1) {
-                $d = ",";
-            }
-            $str .= $d.  $value;
-            var_dump($value);
+        $file = $request->file('file');
+        if (empty($file)) {
+            return sys_response(4000002);
         }
 
+        $res = upImg($file);
+
+        if ($res) {
+            return sys_response(0, '请求成功', $res);
+        } else {
+            return sys_response(0, '请求失败');
+        }
     }
 
 }
