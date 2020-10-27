@@ -45,7 +45,6 @@ class User
         }
 
         $res = upImg($file);
-
         if ($res) {
             return sys_response(0, '请求成功', $res);
         } else {
