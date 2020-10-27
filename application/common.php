@@ -40,3 +40,10 @@ if (!function_exists('sys_response')) {
         return $response;
     }
 }
+
+if (!function_exists('upImg')) {
+    function upImg()
+    {
+
+    }
+}

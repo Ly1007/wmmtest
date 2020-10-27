@@ -16,6 +16,7 @@ Route::group('v1', function () {
     // 用户user模块
     Route::rule('userList', 'User/getList');  // 用户列表
     Route::rule('userInfo', 'User/getInfo');  // 用户信息
+    Route::rule('upHeadImg', 'User/upHeadImg', 'POST');  // 用户上传头像
 
 })->middleware('Account');
 

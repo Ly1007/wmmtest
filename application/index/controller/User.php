@@ -36,4 +36,22 @@ class User
         return sys_response(0, '请求成功', $list);
     }
 
+    // 用户上传头像
+    public function upHeadImg(Request $request)
+    {
+        $post = $request->file();
+        $i = 0;
+        $str = '';
+        $d = '';
+        foreach ($post as $key => $value) {
+            $i++;
+            if ($i!=1) {
+                $d = ",";
+            }
+            $str .= $d.  $value;
+            var_dump($value);
+        }
+
+    }
+
 }
