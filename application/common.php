@@ -61,7 +61,7 @@ if (!function_exists('upImg')) {
 
 
 /**
- * 上传图片示例
+ * 上传图片示例（TP5.1（ROOT_PATH）不能用）
  */
 function addimg($pic,$url){
     // 获取表单上传文件 例如上传了001.jpg
