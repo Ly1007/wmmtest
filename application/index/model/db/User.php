@@ -64,8 +64,8 @@ class User extends Model
         $map = $this->getUserPageMap($input);
 
         return $this->where($map)
-            ->field(['id', 'name', 'tel', 'address', 'sex', 'create_time'])
-            ->order('create_time desc')
+            ->field(['id', 'name', 'tel', 'address', 'sex', 'create_at'])
+            ->order('create_at desc')
             ->limit($offset, $limit)
             ->select();
     }

@@ -53,4 +53,10 @@ class User
         }
     }
 
+    // 导出用户信息
+    public function exportUserInfo()
+    {
+
+    }
+
 }
