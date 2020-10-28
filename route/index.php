@@ -18,6 +18,8 @@ Route::group('v1', function () {
     Route::rule('userInfo', 'User/getInfo');  // 用户信息
     Route::rule('upHeadImg', 'User/upHeadImg', 'POST');  // 用户上传头像
 
+
+
 })->middleware('Account');
 
 // 登录注册
@@ -25,4 +27,7 @@ Route::group('v1', function () {
     Route::rule('login', 'Account/login', 'POST');  // 登录
     Route::rule('complexLogin', 'Account/complexLogin', 'POST');  // 复杂登录
     Route::rule('register', 'Account/register', 'POST');  // 注册
+
+    // 导出
+    Route::rule('export', 'Excel/export');
 });
