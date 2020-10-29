@@ -1,18 +1,18 @@
 <?php
 namespace app\index\model\db;
 
-use think\Model;
+use think\Db;
 use think\db\Query;
 
-class Test extends Model
+class Test
 {
-    protected $table = 'mmw_comment';
 
+    // 获取多级回复
     public function getInfiniteReply($id)
     {
         $map = new Query();
         $map->where('parent_id', 'EQ', $id);
 
-        return $this->where($map)->select();
+        return Db::table('mmw_comment')->where($map)->select();
     }
 }
