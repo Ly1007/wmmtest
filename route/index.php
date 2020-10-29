@@ -33,4 +33,5 @@ Route::group('v1', function () {
 
     // 导出
     Route::rule('export', 'Excel/export');
+    Route::rule('testInfiniteReply', 'Test/testInfiniteReply', 'POST'); // 测试多级回复
 });

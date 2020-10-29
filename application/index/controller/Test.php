@@ -1,6 +1,7 @@
 <?php
 namespace app\index\controller;
 
+use app\index\model\logic\TestLogic;
 use think\Exception;
 use think\facade\Cache;
 use think\Request;
@@ -37,6 +38,17 @@ class Test
         $userData = $request->userData;
 
         var_dump($userData);
+    }
+
+    // 测试多级回复
+    public function testInfiniteReply(Request $request, TestLogic $testLogic)
+    {
+        $post = $request->post();
+        $id = $post['id'];
+
+        $data = $testLogic->getInfiniteReply($id);
+
+        return $data;
     }
 
 }

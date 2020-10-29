@@ -59,4 +59,18 @@ class User
 
     }
 
+    protected function getCommlist($parent_id = 0,&$result = array()){
+        $arr = M('comment')->where("parent_id = '".$parent_id."'")->order("create_time desc")->select();
+        if(empty($arr)){
+            return array();
+        }
+        foreach ($arr as $cm) {
+            $thisArr=&$result[];
+            $cm["children"] = $this->getCommlist($cm["id"],$thisArr);
+            $thisArr = $cm;
+        }
+        return $result;
+    }
+
+
 }
