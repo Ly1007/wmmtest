@@ -1,0 +1,8 @@
+<script src="__STATIC__/layuiadmin/layui/layui.js?t=1"></script>
+<script>
+    layui.config({
+        base: '__STATIC__/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'console']);
+</script>
