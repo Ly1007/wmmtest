@@ -1,14 +1,9 @@
 <?php
 namespace app\admin\controller;
 
-class User
+class Administrators
 {
     public function list()
-    {
-        return view();
-    }
-
-    public function administrators()
     {
         return view();
     }
