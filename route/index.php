@@ -19,10 +19,7 @@ Route::group('v1', function () {
     Route::rule('userInfo', 'Index/User/getInfo');  // 用户信息
     Route::rule('upHeadImg', 'Index/User/upHeadImg', 'POST');  // 用户上传头像
 
-
-
 })->middleware('Account');
-
 
 // 无需登陆即可访问
 Route::group('v1', function () {
