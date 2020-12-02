@@ -1,10 +1,12 @@
 <?php
 namespace app\admin\controller;
 
-class Index
+use think\Controller;
+
+class Index extends Controller
 {
     public function index()
     {
-        return view();
+        return $this->fetch('Index/index');
     }
 }
